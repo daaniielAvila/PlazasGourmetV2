@@ -1,0 +1,1 @@
+Para arrancar el servidor utilizar el comando "node app.js"
