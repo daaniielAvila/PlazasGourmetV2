@@ -1,0 +1,261 @@
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Control - Restaurante</title>
+  <link rel="stylesheet" href="style-dashoard.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="logo">
+    <svg viewBox="0 0 24 24">
+      <path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/>
+    </svg>
+    <span id="restaurantNameSidebar">RestaurantePRO</span>
+  </div>
+  <a href="/dashboard" class="menu-item active">
+    <svg viewBox="0 0 24 24">
+      <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
+    </svg>
+    Dashboard
+  </a>
+  <a href="/reservations" class="menu-item">
+    <svg viewBox="0 0 24 24">
+      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
+    </svg>
+    Reservas
+  </a>
+</div>
+
+<div class="main-content">
+  <div class="header">
+    <h1 id="restaurantNameHeader">Dashboard</h1>
+    <button class="btn btn-primary" onclick="logout()">Cerrar Sesión</button>
+  </div>
+
+  <div class="stats-grid page-content">
+    <div class="stat-card">
+      <h3>Mesas Totales</h3>
+      <h2 id="totalTablesCount">0</h2>
+    </div>
+    <div class="stat-card">
+      <h3>Mesas Disponibles</h3>
+      <h2 id="availableTablesCount">0</h2>
+    </div>
+    <div class="stat-card">
+      <h3>Reservas </h3>
+      <h2 id="todayReservations">0</h2>
+    </div>
+  </div>
+
+  <div class="form-container page-content">
+    <h2>Información del Restaurante</h2>
+    <form id="restaurantForm">
+      <div class="form-group">
+        <label>Nombre del Restaurante</label>
+        <input type="text" id="restaurantName" required>
+      </div>
+      <div class="form-group">
+        <label>Correo Electrónico</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label>Ubicación</label>
+        <input type="text" id="location" required>
+      </div>
+      <div class="form-group">
+        <label>Tipo de Comida</label>
+        <select id="foodType">
+          <option value="mediterranea">Mediterránea</option>
+          <option value="italiana">Italiana</option>
+          <option value="mexicana">Mexicana</option>
+          <option value="asiatica">Asiática</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Número de Mesas</label>
+        <input type="number" id="numberOfTables" min="1" required>
+      </div>
+      <div class="form-group">
+        <label>Mesas Disponibles</label>
+        <input type="number" id="availableTables" min="0" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+  </div>
+
+  <div class="reservations-list page-content">
+    <h2>Reservas de Hoy</h2>
+    <div id="reservationsList">
+    </div>
+  </div>
+</div>
+
+<script>
+    let restaurant = {};
+
+    function loadFormData() {
+        document.getElementById('restaurantName').value = restaurant.nombre || '';
+        document.getElementById('email').value = restaurant.correo || '';
+        document.getElementById('location').value = restaurant.ubicacion || '';
+        document.getElementById('foodType').value = restaurant.tipo_comida || '';
+        document.getElementById('numberOfTables').value = restaurant.mesas_totales || 0;
+        document.getElementById('availableTables').value = restaurant.mesas_disponibles || 0;
+
+        document.getElementById('restaurantNameSidebar').textContent = restaurant.nombre || 'Restaurante';
+        document.getElementById('restaurantNameHeader').textContent = restaurant.nombre || 'Dashboard';
+        document.getElementById('totalTablesCount').textContent = restaurant.mesas_totales || 0;
+        document.getElementById('availableTablesCount').textContent = restaurant.mesas_disponibles || 0;
+    }
+
+    async function loadRestaurantData() {
+        const restaurantId = localStorage.getItem('restaurantId');
+        
+        if (!restaurantId) {
+            console.error('No restaurant ID found in localStorage');
+            window.location.href = '/plazasgourmetv2/register-restaurantes.html';
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3000/restaurantes/${restaurantId}`);
+            if (!response.ok) {
+                throw new Error('Error al cargar los datos del restaurante');
+            }
+            
+            const data = await response.json();
+            restaurant = data;
+            console.log('Loaded restaurant data:', restaurant);
+            loadFormData();
+            return restaurant;
+        } catch (error) {
+            console.error('Error al cargar los datos del restaurante:', error);
+            alert('Error al cargar los datos del restaurante');
+        }
+    }
+
+    async function updateRestaurantData() {
+        const token = localStorage.getItem('token');
+        try {
+            console.log('Updating restaurant with data:', restaurant); // Debugging information
+            const response = await fetch(`http://localhost:3000/restaurantes/${restaurant.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(restaurant)
+            });
+            if (!response.ok) {
+                throw new Error('Error al actualizar el restaurante');
+            }
+            const result = await response.json();
+            console.log('Restaurante actualizado:', result);
+            alert('Información actualizada correctamente');
+        } catch (error) {
+            console.error('Error al actualizar el restaurante:', error);
+            alert('Error al actualizar el restaurante');
+        }
+    }
+
+    async function loadReservations() {
+        const restaurantId = localStorage.getItem('restaurantId');
+        if (!restaurantId) {
+            console.error('No restaurant ID found in localStorage');
+            return;
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3000/reservas/${restaurantId}`);
+            if (!response.ok) {
+                throw new Error('Error al cargar las reservas');
+            }
+            
+            const reservations = await response.json();
+            document.getElementById('todayReservations').textContent = reservations.length;
+            
+            const reservationsList = document.getElementById('reservationsList');
+            reservationsList.innerHTML = reservations.map(reservation => `
+                <div class="reservation-item animate-in">
+                    <div class="reservation-details">
+                        <h3>${reservation.nombre}</h3>
+                        <div class="reservation-info">
+                            <p>Teléfono: <span>${reservation.telefono}</span></p>
+                            <p>Personas: <span>${reservation.numero_personas}</span></p>
+                            <p>Fecha: <span>${new Date(reservation.fecha_reserva).toLocaleDateString()}</span></p>
+                            <p>Hora: <span>${reservation.hora_reserva}</span></p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        } catch (error) {
+            console.error('Error al cargar las reservas:', error);
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('restaurant');
+        localStorage.removeItem('restaurantId');
+        window.location.href = '/plazasgourmetv2/register-restaurantes.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const restaurantData = await loadRestaurantData();
+        if (restaurantData) {
+            await loadReservations();
+        }
+
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                const href = item.getAttribute('href');
+                switch (href) {
+                    case '/dashboard':
+                        showDashboard();
+                        break;
+                    case '/reservations':
+                        showReservations();
+                        break;
+                }
+            });
+        });
+    });
+
+    function showDashboard() {
+        document.querySelectorAll('.page-content').forEach(el => el.style.display = 'none');
+        document.querySelector('.stats-grid').style.display = 'grid';
+        document.querySelector('.form-container').style.display = 'block';
+        document.querySelector('.reservations-list').style.display = 'block';
+    }
+
+    function showReservations() {
+        document.querySelectorAll('.page-content').forEach(el => el.style.display = 'none');
+        document.querySelector('.reservations-list').style.display = 'block';
+    }
+
+    document.getElementById('restaurantForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        restaurant = {
+            ...restaurant,
+            nombre: document.getElementById('restaurantName').value,
+            correo: document.getElementById('email').value,
+            ubicacion: document.getElementById('location').value,
+            tipo_comida: document.getElementById('foodType').value,
+            mesas_totales: parseInt(document.getElementById('numberOfTables').value),
+            mesas_disponibles: parseInt(document.getElementById('availableTables').value)
+        };
+
+        document.getElementById('totalTablesCount').textContent = restaurant.mesas_totales;
+        document.getElementById('availableTablesCount').textContent = restaurant.mesas_disponibles;
+
+        updateRestaurantData();
+    });
+</script>
+</body>
+</html>

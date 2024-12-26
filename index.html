@@ -1,0 +1,360 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#home" class="navbar-logo">
+            <i class="fas fa-utensils"></i> Plazas Gourmet
+        </a>
+
+        <div class="navbar-links">
+            <a href="#home" class="active">Inicio</a>
+            <a href="#restaurantes">Restaurantes</a>
+            <a href="#caracteristicas">Características</a>
+            <a href="#testimonials">Testimonios</a>
+            <a href="#app-promo">App</a>
+            <a href="#deals">Ofertas</a>
+        </div>
+
+        <div class="navbar-buttons">
+            <a href="./register-restaurantes.html" class="btn-login">Acceso a restaurantes</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Descubre los Mejores Restaurantes</h1>
+            <p>Plazas Gourmet te conecta con los restaurantes más increíbles de tu ciudad. Explora menús, haz reservas y disfruta de experiencias gastronómicas únicas con solo unos clics.</p>
+        </div>
+        <div class="hero-video">
+            <video autoplay loop muted playsinline>
+                <source src="https://cdn.pixabay.com/video/2016/02/29/2339-157269920_large.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+        </div>
+    </section>
+
+    <section id="restaurantes" class="restaurants-section">
+        <h2>Restaurantes Destacados</h2>
+        <div class="restaurants-grid" id="restaurantes-container">
+            <!-- Las tarjetas se agregarán aquí dinámicamente -->
+        </div>
+    </section>
+    
+
+    <section id="caracteristicas" class="features-section">
+        <h2>¿Por qué Plazas Gourmet?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-utensils"></i>
+                <h3>Variedad Gastronómica</h3>
+                <p>Explora una amplia selección de restaurantes con diferentes cocinas y estilos.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Reservas Fáciles</h3>
+                <p>Reserva tu mesa en segundos con unos simples clics.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tags"></i>
+                <h3>Promociones Exclusivas</h3>
+                <p>Accede a descuentos y ofertas especiales en tus restaurantes favoritos.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-star"></i>
+                <h3>Reseñas Confiables</h3>
+                <p>Conoce las opiniones reales de otros comensales.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials-section">
+        <h2>Testimonios</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Avatar">
+                </div>
+                <p class="testimonial-quote">Plazas Gourmet me ha permitido descubrir nuevos restaurantes y disfrutar de experiencias gastronómicas únicas.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                    <img src="https://images.unsplash.com/photo-1542385262-cdf06b302c2c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Avatar">
+                </div>
+                <p class="testimonial-quote">La variedad de opciones y la facilidad de reserva han hecho que Plazas Gourmet sea mi primera opción para salir a comer.</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Avatar">
+                </div>
+                <p class="testimonial-quote">Me encanta cómo Plazas Gourmet me permite explorar nuevas cocinas y encontrar mis nuevos restaurantes favoritos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="app-promo" class="app-promo-section">
+        <h2>Descarga nuestra aplicación</h2>
+        <div class="app-promo-content">
+            <p>Disfruta de una experiencia más fluida y personalizada con nuestra aplicación móvil.</p>
+            <div class="app-store-buttons">
+                <a href="#" class="app-store-button">
+                    <div>
+                        <strong>App Store</strong>
+                        <small>Disponible para iOS</small>
+                    </div>
+                    <i class="fab fa-apple"></i>
+                </a>
+                <a href="#" class="app-store-button">
+                    <div>
+                        <strong>Google Play</strong>
+                        <small>Disponible para Android</small>
+                    </div>
+                    <i class="fab fa-google-play"></i>
+                </a>
+            </div>
+        </div>
+        <div class="app-promo-image">
+            <img src="./imagenes/logo.png" alt="Imagen de la aplicación">
+        </div>
+    </section>
+
+    <section id="deals" class="top-deals-section">
+        <h2>Novedades destacadas</h2>
+        <div class="deals-grid">
+            <div class="deal-card">
+                <div class="deal-image">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Imagen de la oferta">
+                </div>
+                <div class="deal-content">
+                    <h3>Oferta de bienvenida</h3>
+                    <p>Disfruta de un 10% de descuento en tu primera reserva.</p>
+                    <span class="deal-tag">Nuevo</span>
+                </div>
+            </div>
+            <div class="deal-card">
+                <div class="deal-image">
+                    <img src="https://rankmyapp.com/wp-content/uploads/2024/01/Google-Play-vs-App-Store-1024x756.jpg.webp" alt="Imagen de la oferta">
+                </div>
+                <div class="deal-content">
+                    <h3>Nuestra app para dispositivos movil estará proximamente disponible para descargar</h3>
+                    <span class="deal-tag">Nuevo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="reservation-modal">
+        <div class="reservation-modal-content">
+            <span class="reservation-modal-close" onclick="closeModal()">&times;</span>
+            <h2>Reserva</h2>
+            <form class="reservation-form" id="reservation-form">
+                <input type="hidden" name="restaurant" value="">
+                <input type="text" id="nombre" placeholder="Nombre" required>
+                <input type="tel" id="telefono" placeholder="Teléfono" required>
+                <input type="date" id="fecha" required>
+                <input type="time" id="hora" required>
+                <select id="personas" required>
+                    <option value="">Número de personas</option>
+                    <option value="1">1 persona</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5">5 personas</option>
+                    <option value="6">6 personas</option>
+                    <option value="7+">7 o más personas</option>
+                </select>
+                <button type="submit">Confirmar Reserva</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.navbar-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    
+        function handleReservation(id_restaurante, nombre_restaurante) {
+            const modal = document.querySelector('.reservation-modal');
+            let restaurantInput = document.getElementById('id_restaurante');
+            let restaurantNameInput = document.getElementById('nombre_restaurante');
+    
+            if (!restaurantInput) {
+                restaurantInput = document.createElement('input');
+                restaurantInput.type = 'hidden';
+                restaurantInput.id = 'id_restaurante';
+                restaurantInput.name = 'id_restaurante';
+                document.querySelector('.reservation-form').prepend(restaurantInput);
+            }
+    
+            if (!restaurantNameInput) {
+                restaurantNameInput = document.createElement('input');
+                restaurantNameInput.type = 'hidden';
+                restaurantNameInput.id = 'nombre_restaurante';
+                restaurantNameInput.name = 'nombre_restaurante';
+                document.querySelector('.reservation-form').prepend(restaurantNameInput);
+            }
+    
+            restaurantInput.value = id_restaurante;
+            restaurantNameInput.value = nombre_restaurante;
+            modal.style.display = 'flex';
+        }
+    
+        function closeModal() {
+            const modal = document.querySelector('.reservation-modal');
+            modal.style.display = 'none';
+        }
+    
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.querySelector('.reservation-modal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    
+        document.getElementById('reservation-form').onsubmit = async function(event) {
+            event.preventDefault();
+    
+            const id_restaurante = document.getElementById('id_restaurante').value;
+            const nombre_restaurante = document.getElementById('nombre_restaurante').value;
+            const nombre = document.getElementById('nombre').value;
+            const telefono = document.getElementById('telefono').value;
+            const fecha_reserva = document.getElementById('fecha').value;
+            const hora_reserva = document.getElementById('hora').value;
+            const numero_personas = document.getElementById('personas').value;
+    
+            const data = {
+                id_restaurante,
+                nombre,
+                telefono,
+                fecha_reserva,
+                hora_reserva,
+                numero_personas
+            };
+    
+            try {
+                const response = await fetch('http://localhost:3000/reservas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Error al hacer la reserva');
+                }
+    
+                const result = await response.json();
+                const reservationDetails = `
+                    Restaurante: ${nombre_restaurante}
+                    Nombre: ${nombre}
+                    Teléfono: ${telefono}
+                    Fecha: ${fecha_reserva}
+                    Hora: ${hora_reserva}
+                    Número de personas: ${numero_personas}
+                `;
+    
+                const blob = new Blob([reservationDetails], { type: 'text/plain' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'reserva.txt';
+                link.click();
+    
+                closeModal();
+                document.getElementById('reservation-form').reset();
+            } catch (error) {
+                console.error('Error al hacer la reserva:', error);
+                alert('Error al hacer la reserva');
+            }
+        };
+    
+        // Función para cargar los restaurantes desde la API
+        function loadRestaurants() {
+            fetch('http://localhost:3000/restaurantes') // Cambia la URL según tu configuración
+                .then(response => response.json()) // Convertir la respuesta a JSON
+                .then(data => {
+                    const restaurantsContainer = document.getElementById('restaurantes-container');
+                    
+                    // Recorremos los datos de los restaurantes recibidos
+                    data.forEach(restaurant => {
+                        const restaurantCard = document.createElement('div');
+                        restaurantCard.classList.add('restaurant-card');
+    
+                        // Imagen del restaurante
+                        const image = document.createElement('img');
+                        image.src = restaurant.imagen || 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80';
+                        image.alt = restaurant.nombre;
+                        restaurantCard.appendChild(image);
+    
+                        // Contenido de la tarjeta
+                        const content = document.createElement('div');
+                        content.classList.add('restaurant-card-content');
+    
+                        // Detalles del restaurante
+                        const details = document.createElement('div');
+                        details.classList.add('restaurant-details');
+                        const name = document.createElement('h3');
+                        name.textContent = restaurant.nombre;
+                        details.appendChild(name);
+    
+                        // Detalles (ubicación y tipo de comida)
+                        const cardDetails = document.createElement('div');
+                        cardDetails.classList.add('card-details');
+                        const location = document.createElement('span');
+                        location.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${restaurant.ubicacion}`;
+                        cardDetails.appendChild(location);
+    
+                        const type = document.createElement('span');
+                        type.innerHTML = `<i class="fas fa-utensils"></i> ${restaurant.tipo_comida}`;
+                        cardDetails.appendChild(type);
+    
+                        details.appendChild(cardDetails);
+                        const description = document.createElement('p');
+                        description.textContent = restaurant.descripcion;
+                        details.appendChild(description);
+    
+                        content.appendChild(details);
+    
+                        // Información de mesas disponibles
+                        const tablesInfo = document.createElement('span');
+                        tablesInfo.classList.add('tables-info');
+                        tablesInfo.innerHTML = `<strong>Mesas Disponibles:</strong> ${restaurant.mesas_disponibles} / <strong>Total:</strong> ${restaurant.mesas_totales}`;
+                        content.appendChild(tablesInfo);
+    
+                        // Footer con botón de reserva
+                        const footer = document.createElement('div');
+                        footer.classList.add('card-footer');
+                        const reserveButton = document.createElement('a');
+                        reserveButton.href = 'javascript:void(0)';
+                        reserveButton.classList.add('btn-reserve');
+                        reserveButton.setAttribute('onclick', `handleReservation(${restaurant.id}, '${restaurant.nombre}')`);
+                        reserveButton.textContent = 'Reservar';
+                        footer.appendChild(reserveButton);
+    
+                        content.appendChild(footer);
+    
+                        // Agregar la tarjeta completa al contenedor
+                        restaurantCard.appendChild(content);
+                        restaurantsContainer.appendChild(restaurantCard);
+                    });
+                })
+                .catch(error => console.error('Error al cargar los restaurantes:', error));
+        }
+    
+        // Llamar a la función cuando la página se haya cargado
+        document.addEventListener('DOMContentLoaded', loadRestaurants);
+    </script>
+</body>
+</html>
